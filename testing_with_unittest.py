@@ -70,7 +70,7 @@ class TestAddition(unittest.TestCase):
                     self.assertEqual(add(a, b, c), a + b + c)
 
 
-class TestDatabaseStuff(unittest.TestCase):
+class TestDatabase(unittest.TestCase):
     """This class contains all tests related to the database."""
 
     def test_db_connection_is_prohibited(self):
