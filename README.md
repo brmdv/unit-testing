@@ -12,6 +12,10 @@ The code contains a simple summation function that has to be tested on a large a
 Further, there are some functions that interact with a (fake) database.
 Here, mock objects are explored. 
 
+## Current status
+**This challenge is not finished.** 
+I encountered a lot of problems while implementing and understanding the mock objects, which took most of my time for exploring PyTest away.
+
 
 ## How to run all tests
 * To run the tests that use the **Unittest** module, you can run 
@@ -32,5 +36,6 @@ Here, mock objects are explored.
 ### Unittest
 I made two separate `TestCase` classes for Unittest: one with the addition and one for all the database stuff.
 
-For the database, a Mock connection is needed. 
+For the database, a Mock connection is needed. I chose to `patch` the `connect_to_db()` function.
 ### PyTest
+Here I use a ficture to generate the addition data for the `add()` function. 
