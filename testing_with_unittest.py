@@ -1,5 +1,7 @@
-from typing import List, Dict
 import unittest
+
+from typing import List, Dict
+from unittest.mock import MagicMock, Mock, patch
 
 
 class ConnectionDatabaseError(Exception):
@@ -19,15 +21,12 @@ def connect_to_db(connection_string: str):
     Function that connects to the db.
 
     We will not give you access to the DB yet. So mock this function if you want to test it.
-
-    TODO: add a unit test to verify that this function raises a ConnectionDatabaseError when a different connection string than 'test' is provided.
-    TODO: add a unit test to verify that this function raises a TestDbError when a different connection string than 'test' is provided.
     """
     print("connection string: ", connection_string)
     if connection_string == "test":
         raise TestDbError("ERROR: YOU FORGOT TO MOCK connect_to_db")
     else:
-        raise ConnectionDatabaseError("Can't connect to the databse!")
+        raise ConnectionDatabaseError("Can't connect to the database!")
 
 
 def get_users_list_from_db(connection_string: str) -> List[Dict[str, str]]:
@@ -44,10 +43,7 @@ def get_users_list_from_db(connection_string: str) -> List[Dict[str, str]]:
 
 
 def add(num_1: int, num_2: int, num_3: int) -> int:
-    """
-    TODO: Add a unit test that tests ALL THE INT between 1 and 200. Every
-    possibility should be tested! (your test can't use more than 10 lines)
-    """
+    """Add three integers."""
     return num_1 + num_2 + num_3
 
 
@@ -74,3 +70,16 @@ class TestAddition(unittest.TestCase):
                     self.assertEqual(add(a, b, c), a + b + c)
 
 
+class TestDatabaseStuff(unittest.TestCase):
+    """This class contains all tests related to the database."""
+
+    def test_db_connection_is_prohibited(self):
+        """Check if databaseconnection is forbidden."""
+        self.assertRaises(ConnectionDatabaseError, connect_to_db, "database_test")
+
+    def test_db_connection_is_mock(self):
+        """Check if test connection checks for mocking."""
+        self.assertRaises(TestDbError, connect_to_db, "test")
+
+    def test_mock_connection(self):
+        pass
