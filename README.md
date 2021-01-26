@@ -24,7 +24,13 @@ Here, mock objects are explored.
   python -m unittest testing_with_unittest.TestDatabase 
   ```
 * The tests with **PyTest** can be executed by running
+  ```
+  pytest testing_with_pytest.py
+  ```
 
 ## More detailed explanation
 ### Unittest
+I made two separate `TestCase` classes for Unittest: one with the addition and one for all the database stuff.
+
+For the database, a Mock connection is needed. 
 ### PyTest

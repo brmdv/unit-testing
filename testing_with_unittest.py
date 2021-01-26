@@ -25,10 +25,10 @@ class TestAddition(unittest.TestCase):
         positive integers is not the most efficient thing in the first place.
         """
 
-        # for a in range(1, 201):
-        #     for b in range(1, 201):
-        #         for c in range(1, 201):
-        #             self.assertEqual(original.add(a, b, c), a + b + c)
+        for a in range(1, 201):
+            for b in range(1, 201):
+                for c in range(1, 201):
+                    self.assertEqual(original.add(a, b, c), a + b + c)
 
 
 class TestDatabase(unittest.TestCase):
@@ -60,5 +60,5 @@ class TestDatabase(unittest.TestCase):
         ]
         mock_db_connection.get_user.return_value = test_users
         result = original.get_users_list_from_db("connection 1")
-        mock_db_connection.assert_called()
-        print(result)
+        mock_db_connection.get_user.assert_called()
+        self.assertEqual(result, test_users)
